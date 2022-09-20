@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem;" *ngFor="let counter of counters">
+  <div class="card-header">
+    You have selected
+    <ng-container *ngIf="tmplCustom; else tmplDefault">
+      <ng-container
+        *ngTemplateOutlet="tmplCustom; context: { itemCounter: counter }"
+      >
+      </ng-container>
+    </ng-container>
+    <ng-template #tmplDefault>
+      {{ counter }}
+    </ng-template>
+  </div>
+</div>
+<!-- 
+[ngTemplateOutlet]="tmplCustom"
+[ngTemplateOutletContext]="{ itemCounter: counter }" -->
+
+<!-- *ngTemplateOutlet="{tmplCustom; context:{itemCounter:counter}}" -->

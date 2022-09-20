@@ -1,0 +1,32 @@
+<hello name="{{ name }}"></hello>
+<div><ng-container [ngTemplateOutlet]="tmplHeader"></ng-container> 1</div>
+<div><ng-container [ngTemplateOutlet]="tmplHeader"></ng-container> 2</div>
+<div><ng-container [ngTemplateOutlet]="tmplHeader"></ng-container> 3</div>
+<ng-template #tmplHeader> Day la ngay : </ng-template>
+
+<div class="card" style="width: 18rem;" *ngFor="let counter of [1, 2, 3]">
+  <div class="card-header">
+    You have selected
+    <ng-container [ngTemplateOutlet]="tmplNumber1"></ng-container> items.
+  </div>
+  <!-- <div class="card-body">
+    There are
+    <ng-container [ngTemplateOutlet]="tmplNumber1"></ng-container> items was
+    selected.
+  </div>
+  <div class="card-footer">
+    You have selected
+    <ng-container [ngTemplateOutlet]="tmplNumber1" t></ng-container> items.
+  </div> -->
+  <ng-template #tmplNumber1>
+    " <span class="badge text-bg-primary">{{ counter }}</span> "
+  </ng-template>
+</div>
+<br />
+<ng-template #templateCustom let-c="itemCounter">
+  <label class="badge text-bg-primary">{{ c }}</label> items.
+</ng-template>
+<app-tmpl-number
+  [counters]="counters"
+  [tmplCustom]="templateCustom"
+></app-tmpl-number>
